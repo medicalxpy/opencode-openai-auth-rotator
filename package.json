@@ -1,0 +1,58 @@
+{
+  "name": "opencode-openai-auth-rotator",
+  "version": "1.0.0",
+  "description": "Multi-account OpenAI authentication rotator with quota-based rotation for OpenCode",
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "codex-auth": "./dist/cli.mjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    },
+    "./cli": {
+      "types": "./dist/cli.d.ts",
+      "import": "./dist/cli.mjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "opencode",
+    "codex",
+    "openai",
+    "authentication",
+    "multi-account",
+    "quota-management"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "open": "^10.1.0"
+  },
+  "devDependencies": {
+    "@opencode-ai/plugin": "0.0.0-beta-202601311405",
+    "@types/node": "^20.17.50",
+    "tsup": "^8.5.0",
+    "typescript": "^5.7.3"
+  },
+  "peerDependencies": {
+    "@opencode-ai/plugin": ">=0.0.0"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
