@@ -27,29 +27,41 @@ This project maintains a multi-account store, and syncs the *currently selected*
 ## Install (from source)
 
 ```bash
+cd /path/to/opencode-openai-auth-rotator
 npm install
 npm run build
+npm link
 ```
+
+- `npm run build` compiles the code and **auto-deploys** the plugin to `~/.config/opencode/plugins/codex_auth_v2.mjs`
+- `npm link` registers the `codex-auth` CLI command globally
 
 ### Enable plugin in OpenCode
 
-Add the built plugin entry to your OpenCode config.
-
-Example (edit your OpenCode config file):
+Add the plugin to your OpenCode config (`~/.config/opencode/opencode.json`):
 
 ```json
 {
-  "plugins": [
-    "/absolute/path/to/opencode-openai-auth-rotator/dist/index.mjs"
+  "plugin": [
+    "./plugins/codex_auth_v2.mjs"
   ]
 }
 ```
+
+Restart OpenCode to load the plugin.
 
 ---
 
 ## Usage: CLI
 
-The CLI is installed as `codex-auth` (from `bin`).
+The CLI is available as `codex-auth` after running `npm link`.
+
+If `codex-auth` shows "command not found", run:
+
+```bash
+cd /path/to/opencode-openai-auth-rotator
+npm link
+```
 
 ### Import account from OpenCode native auth (recommended)
 
@@ -168,6 +180,15 @@ On rotation we update only the `openai` section and preserve other providers (e.
 ---
 
 ## Troubleshooting
+
+### `codex-auth: command not found`
+
+The CLI requires `npm link` to be run after install:
+
+```bash
+cd /path/to/opencode-openai-auth-rotator
+npm link
+```
 
 ### `TypeError: undefined is not an object (evaluating 'currentAuth.type')`
 

@@ -20,6 +20,7 @@
   },
   "scripts": {
     "build": "tsup",
+    "postbuild": "mkdir -p ~/.config/opencode/plugins && cp dist/index.mjs ~/.config/opencode/plugins/codex_auth_v2.mjs",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run build"
